@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Getsmarter Blog{% endblock %}</title>
+
+    {% load static %}
+    <link href="{% static 'css/tailwind.css' %}" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="bg-blue-600 p-4 text-white">
+        <div class="container mx-auto flex justify-between">
+            <h1 class="font-bold text-xl">Getsmarter</h1>
+            <ul class="flex space-x-4">
+                <li><a href="/" class="hover:underline">Accueil</a></li>
+                <li><a href="#" class="hover:underline">Articles</a></li>
+                <li><a href="#" class="hover:underline">À propos</a></li>
+                <li><a href="#" class="hover:underline">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenu des pages -->
+    <main class="container mx-auto mt-8">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Getsmarter</title>
+</head>
+<body>
+
+    <h1>Bienvenue sur le blog Getsmarter</h1>
+
+    {% for article in articles %}
+        <hr>
+        <h2>{{ article.title }}</h2>
+        <p>
+            Par {{ article.author.username }} |
+            {{ article.created_at }}
+        </p>
+        <p>{{ article.content|truncatewords:30 }}</p>
+    {% empty %}
+        <p>Aucun article publié pour le moment.</p>
+    {% endfor %}
+
+</body>
+</html>
