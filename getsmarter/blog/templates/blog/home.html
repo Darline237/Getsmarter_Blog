@@ -1,24 +1,22 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Blog Getsmarter</title>
-</head>
-<body>
+{% extends 'blog/base.html' %}
 
-    <h1>Bienvenue sur le blog Getsmarter</h1>
+{% block title %}Accueil | Getsmarter{% endblock %}
+
+{% block content %}
+    <h1 class="text-2xl font-bold mb-4">
+        Derniers articles
+    </h1>
 
     {% for article in articles %}
-        <hr>
-        <h2>{{ article.title }}</h2>
-        <p>
-            Par {{ article.author.username }} |
-            {{ article.created_at }}
-        </p>
-        <p>{{ article.content|truncatewords:30 }}</p>
+        <div class="bg-white p-4 rounded shadow mb-4">
+            <h2 class="text-xl font-semibold">
+                {{ article.title }}
+            </h2>
+            <p class="text-gray-700">
+                {{ article.content|truncatewords:25 }}
+            </p>
+        </div>
     {% empty %}
-        <p>Aucun article publié pour le moment.</p>
+        <p>Aucun article publié.</p>
     {% endfor %}
-
-</body>
-</html>
+{% endblock %}

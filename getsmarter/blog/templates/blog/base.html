@@ -1,11 +1,10 @@
+{% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Getsmarter Blog{% endblock %}</title>
-
-    {% load static %}
-    <link href="{% static 'css/tailwind.css' %}" rel="stylesheet">
+    {% tailwind_css %}
 </head>
 <body class="bg-gray-100">
 
@@ -22,7 +21,7 @@
         </div>
     </nav>
 
-    <!-- Contenu des pages -->
+    <!-- Zone variable -->
     <main class="container mx-auto mt-8">
         {% block content %}
         {% endblock %}
