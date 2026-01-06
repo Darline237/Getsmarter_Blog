@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+    {{ article.title }} | Getsmarter
+{% endblock %}
+
+{% block content %}
+<article class="bg-white p-6 rounded shadow">
+        <h2 class="text-xl font-semibold">
+                {{ article.title }}
+        </h2>
+<p>{{ article.content }}</p>
+<p>Auteur : {{ article.author }}</p>
+<p>Publié le {{ article.published_at }}</p>
+
+        <a href="{% url 'presentation_article' %}"
+           class="inline-block mt-6 text-blue-600 hover:underline">
+            ← Retour aux articles
+        </a>
+{% endblock %}
+    </article>

@@ -1,10 +1,21 @@
 {% extends 'blog/base.html' %}
 
-{% block title %}
-    {{ article.title }} | Getsmarter
-{% endblock %}
-
 {% block content %}
+{% for article in articles %}
+    <a href="{% url 'details_article' article.id %}">
+        <div class="bg-white p-4 rounded shadow mb-4">
+            <h2 class="text-xl font-semibold">
+                {{ article.title }}
+            </h2>
+            <p class="text-gray-700">
+                {{ article.content|truncatewords:25 }}
+            </p>
+        </div>
+    </a>
+    {% empty %}
+        <p>Aucun article publié.</p>
+    {% endfor %}
+
     <article class="bg-white p-6 rounded shadow">
         <h1 class="text-3xl font-bold mb-4">
             {{ article.title }}
@@ -23,4 +34,5 @@
             ← Retour aux articles
         </a>
     </article>
+    
 {% endblock %}

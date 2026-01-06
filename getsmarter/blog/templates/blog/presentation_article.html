@@ -1,0 +1,42 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+    {{ article.title }} | Getsmarter
+{% endblock %}
+
+{% block content %}
+{% for article in articles %}
+    <a href="{% url 'details_article' article.id %}">
+        <div class="bg-white p-4 rounded shadow mb-4">
+            <h2 class="text-xl font-semibold">
+                {{ article.title }}
+            </h2>
+            <p class="text-gray-700">
+                {{ article.content|truncatewords:25 }}
+            </p>
+        </div>
+    </a>
+    {% empty %}
+        <p>Aucun article publié.</p>
+    {% endfor %}
+
+    <article class="bg-white p-6 rounded shadow">
+        <h1 class="text-3xl font-bold mb-4">
+            {{ article.title }}
+        </h1>
+
+        <p class="text-gray-500 mb-4">
+            Publié le {{ article.published_at|date:"d M Y" }}
+        </p>
+
+        <div class="text-gray-800 leading-relaxed">
+            {{ article.content|linebreaks }}
+        </div>
+
+        <a href="{% url 'home' %}"
+           class="inline-block mt-6 text-blue-600 hover:underline">
+            ← Retour aux articles
+        </a>
+    </article>
+    
+{% endblock %}
