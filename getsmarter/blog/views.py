@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Article
+from .models import Article, Contact
 
 
 def home(request):
@@ -16,4 +16,15 @@ def details_article(request, id):
     return render(request, 'blog/details_article.html', {'article': article})
 
 
+def contact(request):
+    
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email= request.POST.get("email")
+        message=request.POST.get("message")
+        
+        Contact.objects.create(name= name,email=email,message=message) # extencier la classe
 
+        
+    
+    return render(request,'blog/contact.html')

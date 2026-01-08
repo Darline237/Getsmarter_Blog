@@ -1,38 +1,19 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-{% for article in articles %}
-    <a href="{% url 'details_article' article.id %}">
-        <div class="bg-white p-4 rounded shadow mb-4">
-            <h2 class="text-xl font-semibold">
-                {{ article.title }}
-            </h2>
-            <p class="text-gray-700">
-                {{ article.content|truncatewords:25 }}
-            </p>
-        </div>
-    </a>
-    {% empty %}
-        <p>Aucun article publié.</p>
-    {% endfor %}
 
-    <article class="bg-white p-6 rounded shadow">
-        <h1 class="text-3xl font-bold mb-4">
-            {{ article.title }}
-        </h1>
 
-        <p class="text-gray-500 mb-4">
-            Publié le {{ article.published_at|date:"d M Y" }}
-        </p>
 
-        <div class="text-gray-800 leading-relaxed">
-            {{ article.content|linebreaks }}
-        </div>
+<form action="{% url "contact" %}" method="post">
+        {% csrf_token %}
+        <label for="name">Nom</label>
+        <input type="text" name="name" id="name" placeholder="Entrez votre nom" required><br>
+        <label for="Email">Email</label>
+        <input type="email" name="email" placeholder="Entrez votre Email"><br>
+        <label for="">message</label>
+        <input type="text" name="message" placeholder="Entrez votre message"><br><br>
 
-        <a href="{% url 'home' %}"
-           class="inline-block mt-6 text-blue-600 hover:underline">
-            ← Retour aux articles
-        </a>
-    </article>
+        <button type="submit">envoyer</button>
+</form>
     
 {% endblock %}

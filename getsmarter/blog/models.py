@@ -1,3 +1,4 @@
+from typing import Any
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -19,7 +20,8 @@ class Article(models.Model):
     Category,
     on_delete=models.CASCADE,
     related_name='articles',      
-    blank=True
+    blank=True,
+    null= True
 )
     title = models.CharField(max_length=200)
     content = models.TextField()
